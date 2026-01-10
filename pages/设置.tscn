@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://hxanl8e5rsj4"]
+
+[sub_resource type="GDScript" id="GDScript_lad1x"]
+script/source = "extends Control
+
+
+func _on_分辨率_item_selected(index: int) -> void:
+	match index:
+		0:
+			DisplayServer.window_set_size(Vector2i(1920,1000))
+		1:
+			DisplayServer.window_set_size(Vector2i(1600,900))
+		2:
+			DisplayServer.window_set_size(Vector2i(1280,720))
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0,value) # Replace with function body.
+
+
+func _on_返回_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://control.tscn\") # Replace with function body.
+"
+
+[node name="设置" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_lad1x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="分辨率" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "1280*720"
+popup/item_0/id = 0
+popup/item_1/text = "1920*1080"
+popup/item_1/id = 1
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="返回" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "返回"
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/分辨率" to="." method="_on_分辨率_item_selected"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/返回" to="." method="_on_返回_pressed"]

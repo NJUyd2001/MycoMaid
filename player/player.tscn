@@ -1,0 +1,214 @@
+[gd_scene load_steps=19 format=3 uid="uid://p4ulhjm4hjie"]
+
+[ext_resource type="Texture2D" uid="uid://bk0m1liw7c08y" path="res://asset/4ea03fd07956261deb75d65580ee11f9.jpg" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://7v2bmcfrna7x" path="res://asset/Gemini_Generated_Image_8yaww88yaww88yaw.png" id="2_onrkg"]
+
+[sub_resource type="GDScript" id="GDScript_4flbx"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+const GRAVITY_STRENGTH = 600.0  # 自定义重力强度
+
+@onready var sprite = $Sprite
+@onready var interaction_icon = $Interaction_icon
+@onready var pap:ColorRect = $\"../../Interactable/CollisionShape2D/ColorRect\"
+var interacting_with: Object
+var interactables: Array = []
+
+func register_interactable(interactable: Interactable) -> void:
+	if !interactables.has(interactable):
+		interactables.append(interactable)
+		interactable.interacted.connect(_on_interacted)
+
+func unregister_interactable(interactable: Interactable) -> void:
+	interactables.erase(interactable)
+	interactable.interacted.disconnect(_on_interacted)
+
+
+func _on_interacted(interactable: Interactable) -> void:
+	# 处理交互逻辑
+	print(\"Interacted with %s\" % interactable.name)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"start\"):
+		
+			pap.color=Color.GREEN_YELLOW
+
+func _physics_process(delta: float) -> void:
+	# 应用重力（使用自定义值）
+	if not is_on_floor():
+		velocity.y += GRAVITY_STRENGTH * delta
+
+	# 跳跃
+	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# 移动方向
+	var direction := Input.get_axis(\"left\", \"right\")
+	if direction != 0:
+		velocity.x = direction * SPEED
+		sprite.animation = \"run\"
+		sprite.play()
+		sprite.flip_h = direction < 0
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		sprite.animation = \"idle\"
+		sprite.play()
+
+	# 交互逻辑
+	if Input.is_action_pressed(\"interact\") :
+		interacting_with.interact()
+		
+	if Input.is_action_just_pressed(\"quit\"):
+		_control_quit()
+		
+	if Input.is_action_just_pressed(\"start\"):
+		_control_start()
+	
+	# 更新交互图标
+	interaction_icon.visible = interacting_with != null
+	interaction_icon.global_position = global_position + Vector2(0, -40)
+
+	# 执行移动
+	move_and_slide()
+
+func _control_quit() ->void:
+	if Input.is_action_just_pressed(\"quit\"):
+		quit()
+
+func quit() ->void:
+	get_tree().change_scene_to_file(\"res://pages/control.tscn\")
+
+func _control_start() ->void:
+	if Input.is_action_just_pressed(\"start\"):
+		start()
+
+func start() ->void:
+	get_tree().change_scene_to_file(\"res://tech/mainDeck.tscn\")
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("1_onrkg")
+region = Rect2(0, 0, 315, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(351, 12, 315, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(36, 12, 315, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(666, 12, 315, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(36, 512, 315, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(666, 512, 315, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(351, 512, 315, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
+animations = [{
+"frames": [{
+"duration": 1.01,
+"texture": SubResource("AtlasTexture_i3pqv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hs0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw050")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b26j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ghd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvl01")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
+radius = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rkbax"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw30f"]
+atlas = SubResource("CompressedTexture2D_rkbax")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
+atlas = SubResource("CompressedTexture2D_rkbax")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6k8r"]
+atlas = SubResource("CompressedTexture2D_rkbax")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boad6"]
+atlas = SubResource("CompressedTexture2D_rkbax")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgyib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw30f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjkh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6k8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boad6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+script = SubResource("GDScript_4flbx")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_2hs0m")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_4flbx")
+
+[node name="Interaction_icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.9073486e-06, -43)
+scale = Vector2(0.34375, 0.3125)
+sprite_frames = SubResource("SpriteFrames_rgyib")
+autoplay = "default"
+frame_progress = 0.11744435
