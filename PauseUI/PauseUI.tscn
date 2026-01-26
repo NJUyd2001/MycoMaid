@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=3 uid="uid://dht8b8igfsifa"]
+
+[ext_resource type="Script" uid="uid://dqskqdunyghgb" path="res://pause_menu.gd" id="1_2ylms"]
+[ext_resource type="Texture2D" uid="uid://b0i0gjx4i4wkf" path="res://asset/Carved_Regular.png" id="2_celhg"]
+[ext_resource type="Texture2D" uid="uid://guc4t0u1p01a" path="res://asset/Carved_9Slides.png" id="2_owq3v"]
+[ext_resource type="Texture2D" uid="uid://dw0kngmus770f" path="res://asset/Ribbon_Blue_Connection_Down.png" id="3_lrk8m"]
+[ext_resource type="Texture2D" uid="uid://b3tkcu5i376fg" path="res://asset/Ribbon_Red_Connection_Down.png" id="4_a6qof"]
+[ext_resource type="Texture2D" uid="uid://cwfq8uiwwnoiw" path="res://asset/Pressed_02.png" id="6_a6qof"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owq3v"]
+bg_color = Color(0.07362416, 0.07362416, 0.07362416, 0.49803922)
+
+[sub_resource type="Theme" id="Theme_lrk8m"]
+Button/styles/pressed = SubResource("StyleBoxFlat_owq3v")
+
+[node name="Scene" type="Node2D"]
+
+[node name="PauseUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("pause_panel")]
+process_mode = 3
+script = ExtResource("1_2ylms")
+pause_panel = NodePath("Control/PausePanel")
+
+[node name="Control" type="Control" parent="PauseUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PausePanel" type="Panel" parent="PauseUI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseUI/Control/PausePanel"]
+self_modulate = Color(0.45985678, 0.45985678, 0.45985678, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12413195
+anchor_top = 0.1095679
+anchor_right = 0.8833912
+anchor_bottom = 0.86882716
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_owq3v")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PauseUI/Control/PausePanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 434.0
+offset_top = 124.0
+offset_right = -434.0
+offset_bottom = 265.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.57996243, 0.57996243, 0.57996243, 1)
+theme_override_font_sizes/font_size = 70
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="PauseUI/Control/PausePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4234375
+anchor_top = 0.44444445
+anchor_right = 0.5796875
+anchor_bottom = 0.5833333
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="TextureRect" parent="PauseUI/Control/PausePanel/Restart"]
+self_modulate = Color(1, 1, 1, 0.7372549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lrk8m")
+
+[node name="Quit" type="Button" parent="PauseUI/Control/PausePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4234375
+anchor_top = 0.6111111
+anchor_right = 0.5796875
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="TextureRect" parent="PauseUI/Control/PausePanel/Quit"]
+self_modulate = Color(1, 1, 1, 0.7372549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_a6qof")
+
+[node name="PauseButton" type="TextureButton" parent="PauseUI/Control"]
+self_modulate = Color(1, 1, 1, 0.5686275)
+layout_mode = 0
+anchor_left = 0.9348958
+anchor_top = 0.020061728
+anchor_right = 0.9904514
+anchor_bottom = 0.118827164
+theme = SubResource("Theme_lrk8m")
+texture_normal = ExtResource("2_celhg")
+texture_pressed = ExtResource("2_celhg")
+texture_hover = ExtResource("2_celhg")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="PauseUI/Control/PauseButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_a6qof")
+
+[connection signal="pressed" from="PauseUI/Control/PausePanel/Restart" to="PauseUI" method="unpause"]
+[connection signal="pressed" from="PauseUI/Control/PausePanel/Quit" to="PauseUI" method="quit"]
+[connection signal="pressed" from="PauseUI/Control/PauseButton" to="PauseUI" method="pause"]
