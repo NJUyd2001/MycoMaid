@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://8a4xa6k07qge"]
+
+[ext_resource type="Script" uid="uid://cfold6idvi2fk" path="res://mainmenu.gd" id="1_cmhrf"]
+[ext_resource type="PackedScene" uid="uid://b63i6n7eug65w" path="res://ticket_group.tscn" id="2_d2nv2"]
+[ext_resource type="Texture2D" uid="uid://cvuq6bl13fb32" path="res://d724e490701ca599397e74fb943bb2b8.jpg" id="3_7uvds"]
+[ext_resource type="Texture2D" uid="uid://0sbu5qnexrso" path="res://未命名作品.png" id="4_at6rn"]
+[ext_resource type="Texture2D" uid="uid://hmcnwoyl5rik" path="res://78f5bbf087189367921459c5c956d5fd.jpg" id="5_dihg0"]
+[ext_resource type="Texture2D" uid="uid://cyqx4g7qgw7nu" path="res://9c9821ff8ac3d70b0afd5639863b14b3.jpg" id="6_rqglp"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 340.0
+offset_top = 60.0
+offset_right = 340.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cmhrf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.483
+anchor_top = 0.38900003
+anchor_right = 0.483
+anchor_bottom = 0.38900003
+offset_left = -44.416016
+offset_top = -196.07202
+offset_right = 39.583984
+offset_bottom = 191.92798
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 120
+
+[node name="TicketGroup" parent="VBoxContainer" instance=ExtResource("2_d2nv2")]
+layout_mode = 2
+body_texture = ExtResource("3_7uvds")
+stub_texture = ExtResource("4_at6rn")
+
+[node name="TicketGroup2" parent="VBoxContainer" instance=ExtResource("2_d2nv2")]
+layout_mode = 2
+body_texture = ExtResource("5_dihg0")
+stub_texture = ExtResource("4_at6rn")
+
+[node name="TicketGroup3" parent="VBoxContainer" instance=ExtResource("2_d2nv2")]
+layout_mode = 2
+body_texture = ExtResource("6_rqglp")
+stub_texture = ExtResource("4_at6rn")
+
+[node name="TicketGroup4" parent="VBoxContainer" instance=ExtResource("2_d2nv2")]
+layout_mode = 2
+body_texture = ExtResource("3_7uvds")
+stub_texture = ExtResource("4_at6rn")
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 526.0
+offset_right = 804.0
+offset_bottom = 586.0
+text = "退出到开始界面"
+
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
