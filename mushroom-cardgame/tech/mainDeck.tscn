@@ -1,0 +1,159 @@
+[gd_scene load_steps=7 format=3 uid="uid://myyxoe7e0s7t"]
+
+[ext_resource type="Script" uid="uid://d1e7l4quapirt" path="res://tech/l_d.gd" id="1_qsqef"]
+[ext_resource type="Script" uid="uid://g0ienjjcd2k8" path="res://tech/l_deck.gd" id="2_ayvh6"]
+[ext_resource type="Texture2D" uid="uid://bo8rr54ps1eyp" path="res://asset/fdc5df61b4058ed984ca9de24bea3ae.jpg" id="2_xu8hg"]
+[ext_resource type="PackedScene" uid="uid://bomy03cstx6ar" path="res://tech/miniCard.tscn" id="3_2anln"]
+
+[sub_resource type="Theme" id="Theme_v4tm8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2anln"]
+bg_color = Color(0.6, 0.6, 0.6, 0.30980393)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.44, 0.44, 0.44, 0.64705884)
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("scene_1", "scene_2", "scene_3")]
+script = ExtResource("1_qsqef")
+scene_1 = NodePath("Panel/ColorRect/Control2")
+scene_2 = NodePath("Panel/ColorRect/panel")
+scene_3 = NodePath("Panel/ColorRect/panel")
+maxRandomItemNum = 7
+minRandomItemNum = 3
+siteItem = {
+"action1": 100,
+"action2": 100,
+"action3": 80,
+"action4": 80,
+"action5": 100,
+"action6": 60,
+"action7": 20
+}
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+self_modulate = Color(1.1123893, 0.8719021, 0.8894988, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xu8hg")
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+self_modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39245063, 0.6337741, 0.7313261, 0.9490196)
+
+[node name="Button" type="Button" parent="Panel/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.13715278
+anchor_bottom = 0.08950617
+text = "下一部分"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="Panel/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8723958
+anchor_right = 1.0
+anchor_bottom = 0.086419754
+grow_horizontal = 0
+text = "下一曲"
+metadata/_edit_use_anchors_ = true
+
+[node name="panel" type="Panel" parent="Panel/ColorRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2170139
+anchor_top = 0.61728394
+anchor_right = 0.8246528
+anchor_bottom = 1.0030864
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_ayvh6")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Panel/ColorRect/panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_v4tm8")
+color = Color(0.36258334, 0.38, 0.17099999, 0.3137255)
+
+[node name="cardDeck" type="Control" parent="Panel/ColorRect/panel/ColorRect"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ColorRect/panel/ColorRect"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ColorRect/panel/ColorRect/ScrollContainer"]
+custom_minimum_size = Vector2(114, 160)
+layout_mode = 2
+
+[node name="Control" parent="Panel/ColorRect/panel/ColorRect/ScrollContainer/HBoxContainer" node_paths=PackedStringArray("follow_target") instance=ExtResource("3_2anln")]
+layout_mode = 2
+follow_target = NodePath("..")
+
+[node name="Control2" type="Control" parent="Panel/ColorRect"]
+layout_mode = 1
+anchor_left = 0.019097222
+anchor_top = 0.46141976
+anchor_right = 0.12326389
+anchor_bottom = 0.7083333
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Panel/ColorRect/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2anln")
+
+[node name="Label" type="Label" parent="Panel/ColorRect/Control2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.30980393, 0.06666667, 0.06666667, 1)
+text = "Card
+Area"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mini" parent="Panel/ColorRect/Control2" node_paths=PackedStringArray("follow_target") instance=ExtResource("3_2anln")]
+layout_mode = 0
+follow_target = NodePath("..")
+
+[connection signal="button_down" from="Panel/ColorRect/Button" to="." method="get_card"]
