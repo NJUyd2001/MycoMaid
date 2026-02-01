@@ -6,12 +6,14 @@ uid="uid://q1hb1vx5c2ph"
 
 [deps]
 
-files=["res://asset/content.index.translation", "res://asset/content.base.translation", "res://asset/content.base.translation", "res://asset/content.base.translation", "res://asset/content.base.translation"]
+files=["res://asset/content.index.translation", "res://asset/content.base.translation", "res://asset/content.base.translation", "res://asset/content.en.translation", "res://asset/content.en.translation"]
 
 source_file="res://asset/content.csv"
-dest_files=["res://asset/content.index.translation", "res://asset/content.base.translation", "res://asset/content.base.translation", "res://asset/content.base.translation", "res://asset/content.base.translation"]
+dest_files=["res://asset/content.index.translation", "res://asset/content.base.translation", "res://asset/content.base.translation", "res://asset/content.en.translation", "res://asset/content.en.translation"]
 
 [params]
 
 compress=true
 delimiter=0
+unescape_keys=false
+unescape_translations=true

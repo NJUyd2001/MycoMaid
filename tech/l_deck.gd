@@ -40,3 +40,13 @@ func add_card(cardToAdd)-> void:
 	cardToAdd.preDeck=self
 	
 	cardToAdd.cardCurrentState=cardToAdd.cardState.following
+
+func remove_card(cardToRemove)-> void:
+	if cardToRemove.follow_target:
+		if cardToRemove.follow_target.get_parent():
+			cardToRemove.follow_target.get_parent().remove_child(cardToRemove.follow_target)
+		cardToRemove.follow_target.queue_free()
+		cardToRemove.follow_target=null
+	if cardToRemove.get_parent():
+		cardToRemove.get_parent().remove_child(cardToRemove)
+	cardToRemove.preDeck=null

@@ -2,6 +2,8 @@ extends Control
 
 class_name miniCard
 
+signal card_released(card: miniCard)
+
 var velocity=Vector2.ZERO
 var damping=0.35
 var stiffness=500
@@ -20,6 +22,14 @@ enum cardState{following,dragging}
 @export var cardCurrentState = cardState.following
 @export var follow_target:Node
 
+func _ready() -> void:
+	pickButton = $Button
+	if pickButton:
+		if not pickButton.button_down.is_connected(_on_button_button_down):
+			pickButton.button_down.connect(_on_button_button_down)
+		if not pickButton.button_up.is_connected(_on_button_button_up):
+			pickButton.button_up.connect(_on_button_button_up)
+
 func _process(delta: float) -> void:
 	match cardCurrentState:
 		cardState.dragging:
@@ -36,13 +46,13 @@ func _process(delta: float) -> void:
 
 func _on_button_button_down() -> void:
 	cardCurrentState=cardState.dragging
-	
-	pass # Replace with function body.
 
 
 func _on_button_button_up() -> void:
+	var was_dragging = cardCurrentState == cardState.dragging
 	cardCurrentState=cardState.following
-	pass # Replace with function body.
+	if was_dragging:
+		card_released.emit(self)
 
 
 func initCard(Nm) -> void:
