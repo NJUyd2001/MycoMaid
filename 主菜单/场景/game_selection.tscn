@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1nx8totoy4o"]
+
+[ext_resource type="Script" uid="uid://dkwapb6pt7dim" path="res://game_selection.gd" id="1_8dsch"]
+[ext_resource type="PackedScene" uid="uid://bqmbg4rsoxvx" path="res://场景/floating_paper.tscn" id="1_crpe7"]
+[ext_resource type="Texture2D" uid="uid://c4v2f2ye8vfk3" path="res://素材/5fef5ad6c7448cedc681487ccdfbfa8f.png" id="2_1w7qe"]
+[ext_resource type="Texture2D" uid="uid://7x8eijrtpe5t" path="res://素材/ba3d8206a9db145fd4dfb9d94456477a.png" id="3_bd0xv"]
+[ext_resource type="Texture2D" uid="uid://brenmwlwwvvkk" path="res://素材/9f908ee436c47d41cbb99ab0c409a7dc.png" id="5_qxa8l"]
+[ext_resource type="Script" uid="uid://bdhdkhnfow0d0" path="res://sprite_2d.gd" id="6_ixpbk"]
+
+[node name="GameSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8dsch")
+
+[node name="FloatingPaper" parent="." instance=ExtResource("1_crpe7")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 130.0
+offset_top = 249.0
+offset_right = 280.0
+offset_bottom = 449.0
+grow_horizontal = 1
+grow_vertical = 1
+paper_texture = ExtResource("2_1w7qe")
+
+[node name="FloatingPaper2" parent="." instance=ExtResource("1_crpe7")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 322.0
+offset_top = 147.0
+offset_right = 472.0
+offset_bottom = 347.0
+grow_horizontal = 1
+grow_vertical = 1
+paper_texture = ExtResource("3_bd0xv")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1061.0
+offset_top = 563.0
+offset_right = 1126.559
+offset_bottom = 601.9705
+text = "返回"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(841, 342)
+texture = ExtResource("5_qxa8l")
+script = ExtResource("6_ixpbk")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

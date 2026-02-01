@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqmbg4rsoxvx"]
+
+[ext_resource type="Script" uid="uid://ddh5h1v1s0jti" path="res://floating_paper.gd" id="1_51io3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_11vf1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7tn0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wdtmk"]
+
+[node name="FloatingPaper" type="Control"]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_51io3")
+
+[node name="Shadow" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paper" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1077.0
+offset_bottom = -548.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnOverlay" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_11vf1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7tn0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wdtmk")

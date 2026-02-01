@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqhkr0csamqv7"]
+
+[ext_resource type="Script" uid="uid://cnffjq7wmhhcx" path="res://start_menu.gd" id="1_defnm"]
+[ext_resource type="AudioStream" uid="uid://c4xvgbjht4lmi" path="res://素材/三Z-STUDIO,HOYO-MiX - 60%的日常·自由.mp3" id="2_qkb4a"]
+[ext_resource type="Texture2D" uid="uid://bvm5eje0sy0ad" path="res://素材/cd53ce3e39794d1ef10ee98e054e1fee.png" id="2_vsfgv"]
+[ext_resource type="Script" uid="uid://d12sru8skae1o" path="res://building.gd" id="3_qkb4a"]
+[ext_resource type="Shader" uid="uid://12575seb07np" path="res://场景/start_menu.gdshader" id="4_bbx81"]
+[ext_resource type="Texture2D" uid="uid://47nh4a3r8bp5" path="res://素材/1769672510875.png" id="5_o7ued"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eaj4s"]
+shader = ExtResource("4_bbx81")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/is_active = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsfgv"]
+size = Vector2(301.07196, 100.574745)
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_defnm")
+menu_music = ExtResource("2_qkb4a")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_vsfgv")
+expand_mode = 1
+
+[node name="Building" type="Area2D" parent="."]
+script = ExtResource("3_qkb4a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Building"]
+material = SubResource("ShaderMaterial_eaj4s")
+position = Vector2(577.5, 296)
+scale = Vector2(2.2519534, 2.6845703)
+texture = ExtResource("5_o7ued")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building"]
+position = Vector2(586, 260)
+scale = Vector2(2.2519534, 2.6845703)
+shape = SubResource("RectangleShape2D_vsfgv")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1019.0
+offset_top = 519.0
+offset_right = 1103.0
+offset_bottom = 573.0
+text = "退出"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

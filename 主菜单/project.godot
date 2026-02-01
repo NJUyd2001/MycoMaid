@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="主菜单"
-run/main_scene="uid://8a4xa6k07qge"
+run/main_scene="uid://cqhkr0csamqv7"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://素材/icon.svg"
+
+[autoload]
+
+SceneTransition="*res://场景/scene_transition.tscn"
+AudioManager="*res://场景/audio_manager.tscn"
 
 [rendering]
 

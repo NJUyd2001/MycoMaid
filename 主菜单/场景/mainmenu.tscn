@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://8a4xa6k07qge"]
+
+[ext_resource type="Script" uid="uid://cfold6idvi2fk" path="res://mainmenu.gd" id="1_lbnn8"]
+[ext_resource type="AudioStream" uid="uid://dyyxm7ew30bxe" path="res://素材/三Z-STUDIO,HOYO-MiX - 60%的日常.mp3" id="2_b8swh"]
+[ext_resource type="PackedScene" uid="uid://b63i6n7eug65w" path="res://场景/ticket_group.tscn" id="2_yek6q"]
+[ext_resource type="Texture2D" uid="uid://cvuq6bl13fb32" path="res://素材/d724e490701ca599397e74fb943bb2b8.jpg" id="3_b8swh"]
+[ext_resource type="Texture2D" uid="uid://0sbu5qnexrso" path="res://素材/未命名作品.png" id="4_m1dxn"]
+[ext_resource type="Texture2D" uid="uid://hmcnwoyl5rik" path="res://素材/78f5bbf087189367921459c5c956d5fd.jpg" id="5_1uow6"]
+[ext_resource type="Texture2D" uid="uid://cyqx4g7qgw7nu" path="res://素材/9c9821ff8ac3d70b0afd5639863b14b3.jpg" id="6_smu7r"]
+[ext_resource type="Texture2D" uid="uid://5m0p24r5ad6t" path="res://素材/Gemini_Generated_Image_ilu23ailu23ailu2.png" id="7_yek6q"]
+[ext_resource type="Texture2D" uid="uid://buex75qxeghb" path="res://素材/9c9821ff8ac3d70b0afd5639863b14b3 - 副本 - 副本.jpg" id="9_1uow6"]
+[ext_resource type="Texture2D" uid="uid://8bw7q512bmkf" path="res://素材/9c9821ff8ac3d70b0afd5639863b14b3 - 副本.jpg" id="10_smu7r"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 340.0
+offset_top = 60.0
+offset_right = 340.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lbnn8")
+level2_music = ExtResource("2_b8swh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(151.50002, 262)
+scale = Vector2(0.40541664, 0.36132818)
+texture = ExtResource("7_yek6q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.44400004
+anchor_top = 0.31300002
+anchor_right = 0.483
+anchor_bottom = 0.38900003
+offset_left = -137.01953
+offset_top = -194.38235
+offset_right = -0.94750977
+offset_bottom = 290.36963
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 120
+
+[node name="TicketGroup" parent="VBoxContainer" instance=ExtResource("2_yek6q")]
+layout_mode = 2
+body_texture = ExtResource("3_b8swh")
+stub_texture = ExtResource("4_m1dxn")
+
+[node name="TicketGroup2" parent="VBoxContainer" instance=ExtResource("2_yek6q")]
+layout_mode = 2
+body_texture = ExtResource("5_1uow6")
+stub_texture = ExtResource("4_m1dxn")
+
+[node name="TicketGroup3" parent="VBoxContainer" instance=ExtResource("2_yek6q")]
+layout_mode = 2
+body_texture = ExtResource("6_smu7r")
+stub_texture = ExtResource("4_m1dxn")
+
+[node name="TicketGroup4" parent="VBoxContainer" instance=ExtResource("2_yek6q")]
+layout_mode = 2
+body_texture = ExtResource("9_1uow6")
+stub_texture = ExtResource("4_m1dxn")
+
+[node name="TicketGroup5" parent="VBoxContainer" instance=ExtResource("2_yek6q")]
+layout_mode = 2
+body_texture = ExtResource("10_smu7r")
+stub_texture = ExtResource("4_m1dxn")
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 526.0
+offset_right = 804.0
+offset_bottom = 586.0
+text = "退出到开始界面"
+
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
