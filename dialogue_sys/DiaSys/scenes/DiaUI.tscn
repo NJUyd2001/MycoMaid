@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://xgq2yoeqn64c"]
+
+[ext_resource type="Script" uid="uid://dux3uv43qg1rb" path="res://DiaSys/scripts/DialogueManager.gd" id="1_gcneu"]
+[ext_resource type="Resource" uid="uid://b2dkrhgiyijmo" path="res://DiaSys/Dialogues/dia1.tres" id="2_7e3mn"]
+[ext_resource type="Texture2D" uid="uid://doqjv4butjdc4" path="res://DiaSys/Asset/icon.svg" id="2_w3rha"]
+
+[node name="control" type="Control" unique_id=1947821286 node_paths=PackedStringArray("character_name_text", "text_box", "left_avatar", "right_avatar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gcneu")
+character_name_text = NodePath("DialogueBox/DialoguePnael/DiaLogueMargin/VBoxContainer/name")
+text_box = NodePath("DialogueBox/DialoguePnael/DiaLogueMargin/VBoxContainer/content")
+left_avatar = NodePath("DialogueBox/LAvatar")
+right_avatar = NodePath("DialogueBox/RAvatar")
+main_dialogue = ExtResource("2_7e3mn")
+
+[node name="BackGround" type="Control" parent="." unique_id=1605512178]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BasicBG" type="TextureRect" parent="BackGround" unique_id=98020970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="BackGround/BasicBG" unique_id=1646203325]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubBG" type="TextureRect" parent="BackGround" unique_id=73525972]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueBox" type="HBoxContainer" parent="." unique_id=1922606951]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.66820985
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="LAvatar" type="TextureRect" parent="DialogueBox" unique_id=1442853382]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_w3rha")
+stretch_mode = 5
+
+[node name="DialoguePnael" type="Panel" parent="DialogueBox" unique_id=46789224]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DiaLogueMargin" type="MarginContainer" parent="DialogueBox/DialoguePnael" unique_id=639014441]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox/DialoguePnael/DiaLogueMargin" unique_id=611504047]
+layout_mode = 2
+
+[node name="name" type="Label" parent="DialogueBox/DialoguePnael/DiaLogueMargin/VBoxContainer" unique_id=1507203430]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "对话人物"
+
+[node name="content" type="Label" parent="DialogueBox/DialoguePnael/DiaLogueMargin/VBoxContainer" unique_id=1240784522]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "对话内容
+"
+autowrap_mode = 3
+
+[node name="RAvatar" type="TextureRect" parent="DialogueBox" unique_id=143467040]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_w3rha")
+stretch_mode = 5
+
+[connection signal="gui_input" from="DialogueBox/DialoguePnael/DiaLogueMargin" to="." method="_on_click"]

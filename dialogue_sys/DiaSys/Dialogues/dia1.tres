@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="DialogueGroup" format=3 uid="uid://b2dkrhgiyijmo"]
+
+[ext_resource type="Script" uid="uid://d6b25tygg5ps" path="res://DiaSys/scripts/dialogue.gd" id="1_7nt4x"]
+[ext_resource type="Script" uid="uid://b22ou4fukx6f8" path="res://DiaSys/scripts/DialogueGroup.gd" id="2_xk3my"]
+
+[sub_resource type="Resource" id="Resource_7nt4x"]
+script = ExtResource("1_7nt4x")
+character_name = "第一句"
+content = "龙 幽灵 地面 飞行"
+show_on_left = true
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_xk3my"]
+script = ExtResource("1_7nt4x")
+character_name = "第二句"
+content = "毒 虫 水 电"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_1vko6"]
+script = ExtResource("1_7nt4x")
+character_name = "第三句"
+content = "岩石 草 恶"
+show_on_left = true
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_b1x0y"]
+script = ExtResource("1_7nt4x")
+character_name = "第四句"
+content = "冰 一般 火 格斗"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_p0kg1"]
+script = ExtResource("1_7nt4x")
+character_name = "第五句"
+content = "钢 超能 妖精"
+show_on_left = true
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_h2r32"]
+script = ExtResource("1_7nt4x")
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_qq43p"]
+script = ExtResource("1_7nt4x")
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_b587c"]
+script = ExtResource("1_7nt4x")
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[resource]
+script = ExtResource("2_xk3my")
+dialogue_list = Array[ExtResource("1_7nt4x")]([SubResource("Resource_7nt4x"), SubResource("Resource_xk3my"), SubResource("Resource_1vko6"), SubResource("Resource_b1x0y"), SubResource("Resource_p0kg1"), SubResource("Resource_h2r32"), SubResource("Resource_qq43p"), SubResource("Resource_b587c")])
+metadata/_custom_type_script = "uid://b22ou4fukx6f8"

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dv1akqcx1aqr"]
+
+[ext_resource type="Script" uid="uid://cb5fx1t5rkrym" path="res://Diatest/changecolor.gd" id="1_ue40i"]
+[ext_resource type="PackedScene" uid="uid://xgq2yoeqn64c" path="res://DiaSys/scenes/DiaUI.tscn" id="2_0jnwd"]
+
+[node name="control" type="Control" unique_id=1294909036 node_paths=PackedStringArray("DiaPanl")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ue40i")
+DiaPanl = NodePath("CanvasLayer/dia")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=556762123]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="." unique_id=1296252799]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="." unique_id=1553850636]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7335069
+anchor_top = 0.7546296
+anchor_right = 0.9800347
+anchor_bottom = 0.9660494
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "talking"
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1474890392]
+process_mode = 3
+
+[node name="dia" parent="CanvasLayer" unique_id=1947821286 instance=ExtResource("2_0jnwd")]
+visible = false
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
