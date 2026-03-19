@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://djsbw23nyu6as"]
+
+[ext_resource type="Texture2D" uid="uid://dljer3libuvht" path="res://states/asset/fdc5df61b4058ed984ca9de24bea3ae.jpg" id="1_djhqg"]
+[ext_resource type="Script" uid="uid://csrn1b81pxi31" path="res://states/Script/hand.gd" id="2_vpnjv"]
+[ext_resource type="PackedScene" uid="uid://k63tnd6js0vs" path="res://states/Scene/card.tscn" id="3_c6r5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jput1"]
+size = Vector2(1280, 488)
+
+[sub_resource type="Theme" id="Theme_ujqnb"]
+Button/colors/icon_normal_color = Color(0.31, 1, 0.89649993, 1)
+
+[node name="Node2D" type="Node2D" unique_id=1367849691]
+
+[node name="Control" type="Control" parent="." unique_id=799361467]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="ColorRect" type="TextureRect" parent="Control" unique_id=1710875233]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_djhqg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Control" unique_id=410977768]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Area2D" unique_id=932415472]
+position = Vector2(640, 244)
+shape = SubResource("RectangleShape2D_jput1")
+
+[node name="battle_filed" type="CanvasLayer" parent="." unique_id=14165481 groups=["ui_layer"]]
+
+[node name="Hand" type="HBoxContainer" parent="battle_filed" unique_id=1607307702]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -160.0
+offset_right = 184.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("2_vpnjv")
+
+[node name="CardUI" parent="battle_filed/Hand" unique_id=971714593 instance=ExtResource("3_c6r5q")]
+layout_mode = 2
+
+[node name="CardUI2" parent="battle_filed/Hand" unique_id=1736955642 instance=ExtResource("3_c6r5q")]
+layout_mode = 2
+
+[node name="CardUI3" parent="battle_filed/Hand" unique_id=1114869630 instance=ExtResource("3_c6r5q")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="battle_filed" unique_id=1297291699]
+anchors_preset = -1
+anchor_left = 0.0578125
+anchor_top = 0.69166666
+anchor_right = 0.18802083
+anchor_bottom = 0.8074074
+theme = SubResource("Theme_ujqnb")
+theme_override_font_sizes/font_size = 32
+text = "Get
+"
+metadata/_edit_use_anchors_ = true
