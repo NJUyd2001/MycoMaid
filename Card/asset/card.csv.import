@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cnhkq5nmguyaa"
+
+[deps]
+
+files=["res://Card/asset/card.Name.translation", "res://Card/asset/card.Rare.translation", "res://Card/asset/card.Cost.translation", "res://Card/asset/card.Type.translation", "res://Card/asset/card.Text.translation", "res://Card/asset/card.Effect.translation"]
+
+source_file="res://Card/asset/card.csv"
+dest_files=["res://Card/asset/card.Name.translation", "res://Card/asset/card.Rare.translation", "res://Card/asset/card.Cost.translation", "res://Card/asset/card.Type.translation", "res://Card/asset/card.Text.translation", "res://Card/asset/card.Effect.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
