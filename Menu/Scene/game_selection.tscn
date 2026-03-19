@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://c1nx8totoy4o"]
+
+[ext_resource type="Script" uid="uid://dkwapb6pt7dim" path="res://Menu/Script/game_selection.gd" id="1_8dsch"]
+[ext_resource type="PackedScene" uid="uid://bqmbg4rsoxvx" path="res://Menu/Scene/floating_paper.tscn" id="1_crpe7"]
+[ext_resource type="Texture2D" uid="uid://db32wfu48dqli" path="res://Menu/asset/Select/BG.png" id="2_v231l"]
+[ext_resource type="Texture2D" uid="uid://cpvmb6wa117uj" path="res://Menu/asset/Select/Continue.png" id="5_l2fy6"]
+[ext_resource type="PackedScene" uid="uid://dttpojibe0sku" path="res://Menu/Scene/record.tscn" id="7_66hsy"]
+[ext_resource type="Texture2D" uid="uid://cmoyuafclwbov" path="res://Menu/asset/Select/Pass.png" id="7_l2fy6"]
+[ext_resource type="Texture2D" uid="uid://dj1xgp4kuapej" path="res://Menu/asset/Select/coffee.png" id="7_v231l"]
+[ext_resource type="PackedScene" uid="uid://qcjb3j3f1xke" path="res://PauseUI/Scene/Pause_button.tscn" id="8_ggdhr"]
+
+[node name="GameSelection" type="Control" unique_id=972918860]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8dsch")
+
+[node name="BackGround" type="TextureRect" parent="." unique_id=1073890139]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v231l")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ContinueGame" parent="." unique_id=185613978 instance=ExtResource("1_crpe7")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105000004
+anchor_top = 0.23500001
+anchor_right = 0.238
+anchor_bottom = 0.53300005
+offset_left = 1.5999908
+offset_top = 13.799988
+offset_right = -18.640015
+offset_bottom = -0.7600403
+grow_horizontal = 1
+grow_vertical = 1
+rotation = -0.09958706
+paper_texture = ExtResource("5_l2fy6")
+metadata/_edit_use_anchors_ = true
+
+[node name="NewGame" parent="." unique_id=617002361 instance=ExtResource("1_crpe7")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36328125
+anchor_top = 0.26805556
+anchor_right = 0.55859375
+anchor_bottom = 0.7
+grow_horizontal = 1
+grow_vertical = 1
+paper_texture = ExtResource("7_l2fy6")
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" parent="." unique_id=2064779102 instance=ExtResource("1_crpe7")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.77734375
+anchor_top = 0.65416664
+anchor_right = 0.9328125
+anchor_bottom = 0.93194443
+grow_horizontal = 1
+grow_vertical = 1
+paper_texture = ExtResource("7_v231l")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="TextureButton" parent="." unique_id=1303363875]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85859376
+anchor_top = 0.7152778
+anchor_right = 0.96547157
+anchor_bottom = 0.8888889
+
+[node name="TextureRect" type="TextureRect" parent="Button" unique_id=1582199068]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.18274374
+anchor_top = -0.36
+anchor_right = 0.8172563
+anchor_bottom = 1.112
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_l2fy6")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" parent="." unique_id=407686851 instance=ExtResource("7_66hsy")]
+position = Vector2(977, 224)
+
+[node name="Pause" parent="." unique_id=1496593794 instance=ExtResource("8_ggdhr")]
+layout_mode = 0
+anchor_left = 0.9375
+anchor_top = 0.029166667
+anchor_right = 0.9375
+anchor_bottom = 0.029166667
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

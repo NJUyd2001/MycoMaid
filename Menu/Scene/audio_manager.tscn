@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cfclne1cudakj"]
+
+[ext_resource type="Script" uid="uid://b2dlsc3d514to" path="res://Menu/Script/audio_manager.gd" id="1_fmqd6"]
+[ext_resource type="AudioStream" uid="uid://dyyxm7ew30bxe" path="res://Menu/asset/Music/三Z-STUDIO,HOYO-MiX - 60%的日常.mp3" id="2_ucjau"]
+
+[node name="AudioManager" type="Node" unique_id=763627758]
+script = ExtResource("1_fmqd6")
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="." unique_id=376765072]
+stream = ExtResource("2_ucjau")
+volume_db = -26.313
+autoplay = true

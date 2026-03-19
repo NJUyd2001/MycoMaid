@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cqhkr0csamqv7"]
+
+[ext_resource type="Script" uid="uid://cnffjq7wmhhcx" path="res://Menu/Script/start_menu.gd" id="1_defnm"]
+[ext_resource type="AudioStream" uid="uid://c4xvgbjht4lmi" path="res://Menu/asset/Music/三Z-STUDIO,HOYO-MiX - 60%的日常·自由.mp3" id="2_qkb4a"]
+[ext_resource type="Texture2D" uid="uid://bvm5eje0sy0ad" path="res://Menu/asset/StartMenuBG.png" id="2_vsfgv"]
+[ext_resource type="Texture2D" uid="uid://br0eyecquwo2d" path="res://Menu/asset/StartMenuObjects/1770458605127.png" id="3_8jbf6"]
+[ext_resource type="Script" uid="uid://d12sru8skae1o" path="res://Menu/Script/building.gd" id="3_qkb4a"]
+[ext_resource type="Shader" uid="uid://12575seb07np" path="res://Menu/Scene/start_menu.gdshader" id="4_bbx81"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eaj4s"]
+shader = ExtResource("4_bbx81")
+shader_parameter/outline_color = Color(0, 0.15382531, 0.29297778, 1)
+shader_parameter/width = 10.0
+shader_parameter/is_active = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xx8g"]
+size = Vector2(350.80652, 115.10222)
+
+[node name="StartMenu" type="Control" unique_id=363395275]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_defnm")
+menu_music = ExtResource("2_qkb4a")
+
+[node name="Background" type="TextureRect" parent="." unique_id=179740678]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_vsfgv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Building" type="Area2D" parent="." unique_id=416737803]
+script = ExtResource("3_qkb4a")
+
+[node name="building" type="Sprite2D" parent="Building" unique_id=450966485]
+material = SubResource("ShaderMaterial_eaj4s")
+position = Vector2(640.00006, 360)
+scale = Vector2(0.4040404, 0.5357142)
+texture = ExtResource("3_8jbf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building" unique_id=223997052]
+position = Vector2(636, 282.5)
+scale = Vector2(2.2519534, 2.6845703)
+shape = SubResource("RectangleShape2D_3xx8g")
+
+[node name="BtnExit" type="Button" parent="." unique_id=1484987179]
+layout_mode = 0
+anchor_left = 0.8845486
+anchor_top = 0.8009259
+anchor_right = 0.9574653
+anchor_bottom = 0.8842593
+text = "退出"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="Building" to="Building" method="_on_input_event"]
+[connection signal="mouse_entered" from="Building" to="Building" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Building" to="Building" method="_on_mouse_exited"]
+[connection signal="pressed" from="BtnExit" to="." method="_on_button_pressed"]

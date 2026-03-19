@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://8a4xa6k07qge"]
+
+[ext_resource type="Script" uid="uid://cfold6idvi2fk" path="res://Menu/Script/mainmenu.gd" id="1_ivngp"]
+[ext_resource type="AudioStream" uid="uid://dyyxm7ew30bxe" path="res://Menu/asset/Music/三Z-STUDIO,HOYO-MiX - 60%的日常.mp3" id="2_haito"]
+[ext_resource type="Texture2D" uid="uid://5m0p24r5ad6t" path="res://Menu/asset/MainMenu/MainmenuBg.png" id="3_sc17e"]
+[ext_resource type="PackedScene" uid="uid://b63i6n7eug65w" path="res://Menu/Scene/ticket_group.tscn" id="4_3y2el"]
+[ext_resource type="Texture2D" uid="uid://dtdp78ek74ryx" path="res://Menu/asset/MainMenu/story.png" id="5_yhke6"]
+[ext_resource type="Texture2D" uid="uid://h6tuek0j52cb" path="res://Menu/asset/MainMenu/cut.png" id="6_kf7l1"]
+[ext_resource type="Texture2D" uid="uid://bj4fxrjjtu8m5" path="res://Menu/asset/MainMenu/rogue.png" id="7_76143"]
+[ext_resource type="Texture2D" uid="uid://d0k6hglk7tv58" path="res://Menu/asset/MainMenu/cards.png" id="8_cmhp7"]
+[ext_resource type="Texture2D" uid="uid://notu077owuxm" path="res://Menu/asset/MainMenu/trade.png" id="9_omgcd"]
+[ext_resource type="Texture2D" uid="uid://dqc7u8iejjh6p" path="res://Menu/asset/MainMenu/setting.png" id="10_qbp55"]
+[ext_resource type="PackedScene" uid="uid://qcjb3j3f1xke" path="res://PauseUI/Scene/Pause_button.tscn" id="11_xbg7e"]
+
+[node name="MainMenu" type="Control" unique_id=170945926]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ivngp")
+level2_music = ExtResource("2_haito")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1434086212]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.573792, 0.5737919, 0.5737919, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2066609174]
+position = Vector2(628.03107, 358.625)
+scale = Vector2(0.44877586, 0.3999721)
+texture = ExtResource("3_sc17e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1546622322]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.62453866
+anchor_top = 0.059323553
+anchor_right = 0.809375
+anchor_bottom = 0.92638886
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 120
+metadata/_edit_use_anchors_ = true
+
+[node name="TicketGroup" parent="VBoxContainer" unique_id=799294590 instance=ExtResource("4_3y2el")]
+layout_mode = 2
+body_texture = ExtResource("5_yhke6")
+stub_texture = ExtResource("6_kf7l1")
+
+[node name="TicketGroup2" parent="VBoxContainer" unique_id=1156530976 instance=ExtResource("4_3y2el")]
+layout_mode = 2
+body_texture = ExtResource("7_76143")
+stub_texture = ExtResource("6_kf7l1")
+
+[node name="TicketGroup3" parent="VBoxContainer" unique_id=196817853 instance=ExtResource("4_3y2el")]
+layout_mode = 2
+body_texture = ExtResource("8_cmhp7")
+stub_texture = ExtResource("6_kf7l1")
+
+[node name="TicketGroup4" parent="VBoxContainer" unique_id=1484107187 instance=ExtResource("4_3y2el")]
+layout_mode = 2
+body_texture = ExtResource("9_omgcd")
+stub_texture = ExtResource("6_kf7l1")
+
+[node name="TicketGroup5" parent="VBoxContainer" unique_id=1440146460 instance=ExtResource("4_3y2el")]
+layout_mode = 2
+body_texture = ExtResource("10_qbp55")
+stub_texture = ExtResource("6_kf7l1")
+
+[node name="quit" type="Button" parent="." unique_id=1174884916]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8159722
+anchor_top = 0.837963
+anchor_right = 0.9201389
+anchor_bottom = 0.9305556
+text = "退出到开始界面"
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" parent="." unique_id=1496593794 instance=ExtResource("11_xbg7e")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.92890626
+anchor_top = 0.055555556
+anchor_right = 0.92890626
+anchor_bottom = 0.055555556
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
