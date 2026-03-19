@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dyq6scwmfmrx0"]
+
+[ext_resource type="Script" uid="uid://b8e5m1que4bo6" path="res://PauseUI/simple_ui.gd" id="1_dyrdy"]
+[ext_resource type="Texture2D" uid="uid://ba1jerdr601cn" path="res://PauseUI/asset/Pressed_10.png" id="2_dyrdy"]
+[ext_resource type="Texture2D" uid="uid://cwfq8uiwwnoiw" path="res://PauseUI/asset/Pressed_02.png" id="3_61h82"]
+[ext_resource type="Texture2D" uid="uid://lelati1vf6vf" path="res://PauseUI/asset/Regular_03.png" id="4_mrdvo"]
+
+[node name="UI" type="Control" unique_id=1195963652]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dyrdy")
+
+[node name="Panel" type="ColorRect" parent="." unique_id=2077263550]
+layout_mode = 0
+offset_right = 162.0
+offset_bottom = 41.0
+color = Color(0.14825045, 0.49814227, 0.89801866, 0.64705884)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1354597571]
+layout_mode = 0
+offset_right = 162.0
+offset_bottom = 41.0
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=1065393214]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+color = Color(0.4351923, 0.43519226, 0.43519226, 1)
+
+[node name="PauseButton" type="TextureButton" parent="HBoxContainer/ColorRect" unique_id=1703052299]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -9.0
+offset_right = 13.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_dyrdy")
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer" unique_id=1247958235]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+color = Color(0.4351923, 0.43519226, 0.43519226, 1)
+
+[node name="SettingButton" type="TextureButton" parent="HBoxContainer/ColorRect2" unique_id=250646080]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 13.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_61h82")
+
+[node name="ColorRect3" type="ColorRect" parent="HBoxContainer" unique_id=1806649271]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+color = Color(0.4351923, 0.43519226, 0.43519226, 1)
+
+[node name="NoiseBtton" type="TextureButton" parent="HBoxContainer/ColorRect3" unique_id=1547549782]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -3.0
+offset_right = 13.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_mrdvo")
+
+[connection signal="pressed" from="HBoxContainer/ColorRect/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColorRect2/SettingButton" to="." method="_on_setting_button_pressed"]

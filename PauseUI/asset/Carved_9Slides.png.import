@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://guc4t0u1p01a"
-path="res://.godot/imported/Carved_9Slides.png-7a9bb457b764afdd811e9eaadffd0307.ctex"
+path="res://.godot/imported/Carved_9Slides.png-f8ad442716374a7b0c262a89d83a0a61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Carved_9Slides.png"
-dest_files=["res://.godot/imported/Carved_9Slides.png-7a9bb457b764afdd811e9eaadffd0307.ctex"]
+source_file="res://PauseUI/asset/Carved_9Slides.png"
+dest_files=["res://.godot/imported/Carved_9Slides.png-f8ad442716374a7b0c262a89d83a0a61.ctex"]
 
 [params]
 

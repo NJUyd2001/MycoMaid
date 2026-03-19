@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://qcjb3j3f1xke"]
+
+[ext_resource type="Script" uid="uid://2gr4lggl1cfs" path="res://PauseUI/pause_button.gd" id="1_iw6wx"]
+[ext_resource type="Texture2D" uid="uid://b0i0gjx4i4wkf" path="res://PauseUI/asset/Carved_Regular.png" id="2_s4r4v"]
+[ext_resource type="Texture2D" uid="uid://cwfq8uiwwnoiw" path="res://PauseUI/asset/Pressed_02.png" id="3_kepu1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iw6wx"]
+bg_color = Color(0.17872764, 0.17872764, 0.17872764, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4r4v"]
+bg_color = Color(0.4636, 0.49818003, 0.76, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owq3v"]
+bg_color = Color(0.07362416, 0.07362416, 0.07362416, 0.49803922)
+
+[sub_resource type="Theme" id="Theme_lrk8m"]
+Button/styles/hover = SubResource("StyleBoxFlat_iw6wx")
+Button/styles/normal = SubResource("StyleBoxFlat_s4r4v")
+Button/styles/pressed = SubResource("StyleBoxFlat_owq3v")
+
+[node name="Pause" type="Control" unique_id=1496593794]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_iw6wx")
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="TextureButton" parent="." unique_id=141559680]
+self_modulate = Color(1, 1, 1, 0.5686275)
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_lrk8m")
+texture_normal = ExtResource("2_s4r4v")
+texture_pressed = ExtResource("2_s4r4v")
+texture_hover = ExtResource("2_s4r4v")
+
+[node name="TextureRect" type="TextureRect" parent="PauseButton" unique_id=981486221]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kepu1")
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsgimnmhoj2ab"
-path="res://.godot/imported/Ribbon_Yellow_Connection_Down.png-b92aeb136278e1aadc37340c54a10d8c.ctex"
+path="res://.godot/imported/Ribbon_Yellow_Connection_Down.png-c97f579f6512f8cfb3ea72eb8555bc17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Ribbon_Yellow_Connection_Down.png"
-dest_files=["res://.godot/imported/Ribbon_Yellow_Connection_Down.png-b92aeb136278e1aadc37340c54a10d8c.ctex"]
+source_file="res://PauseUI/asset/Ribbon_Yellow_Connection_Down.png"
+dest_files=["res://.godot/imported/Ribbon_Yellow_Connection_Down.png-c97f579f6512f8cfb3ea72eb8555bc17.ctex"]
 
 [params]
 
