@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="DialogueGroup" format=3 uid="uid://dpyqdwycl3jmh"]
+
+[ext_resource type="Script" uid="uid://d6b25tygg5ps" path="res://dialogue_sys/DiaSys/scripts/dialogue.gd" id="1_8pdmi"]
+[ext_resource type="Script" uid="uid://b22ou4fukx6f8" path="res://dialogue_sys/DiaSys/scripts/DialogueGroup.gd" id="2_ftq5w"]
+[ext_resource type="Texture2D" uid="uid://bk0m1liw7c08y" path="res://asset/见手青.jpg" id="2_np2ls"]
+
+[sub_resource type="Resource" id="Resource_8pdmi"]
+script = ExtResource("1_8pdmi")
+character_name = "见手青"
+content = "手握着话筒，额头微微出汗，因胸腔剧烈震动而微微颤抖着，发出低低的喘气声，激动地）：非常感谢...大家今天能来看我们的演出......"
+avatar = ExtResource("2_np2ls")
+show_on_left = true
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_ftq5w"]
+script = ExtResource("1_8pdmi")
+content = "(台下欢呼声和应援声此起彼伏）"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_np2ls"]
+script = ExtResource("1_8pdmi")
+character_name = "见手青"
+content = "最后的这首歌，我想送给，一直支持着我们的大家。"
+avatar = ExtResource("2_np2ls")
+show_on_left = true
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_tifnc"]
+script = ExtResource("1_8pdmi")
+content = "（台下的欢呼声愈发强烈）"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_osffo"]
+script = ExtResource("1_8pdmi")
+character_name = "见手青"
+content = "（望向台下的观众，目光却似乎在寻找着谁）：这首歌的名字是（看到台下的我，脸上笑容绽放）《你与我的未来》！"
+avatar = ExtResource("2_np2ls")
+show_on_left = true
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_e34jv"]
+script = ExtResource("1_8pdmi")
+content = "（台下响起尖叫声，观众的欢呼声更为强烈，一阵强烈的音乐声响起）"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_btqpg"]
+script = ExtResource("1_8pdmi")
+character_name = "画外音"
+content = "如果不是亲眼见到这一切，我或许还会认为自己在梦中。这场盛大的、热烈的演出，观众的呐喊声与尖叫声让我有点晃神，不确定这一切是否真实。四位少女在舞台上飞扬的身影，共同描绘出这一幅生动的画卷，在我脑海中留下了深深的烙印，挥之不去。如果没有三个月前的那场邂逅，我现在还能否可以在这，经营着这间Live House，过着这样的生活呢？那样一切或许都不得而知了。可现在的我知道，与她们——与菌子娘们的相遇，会是我人生中，最大的幸运......"
+show_on_left = true
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_eiel8"]
+script = ExtResource("1_8pdmi")
+content = "（一阵激烈的转场，我们如果有动画的话，也可以在这个时候插入，反正故事就一下子回到了三个月前）"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_0c1ha"]
+script = ExtResource("1_8pdmi")
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_1uoqn"]
+script = ExtResource("1_8pdmi")
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_ve32o"]
+script = ExtResource("1_8pdmi")
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[resource]
+script = ExtResource("2_ftq5w")
+dialogue_list = Array[ExtResource("1_8pdmi")]([SubResource("Resource_8pdmi"), SubResource("Resource_ftq5w"), SubResource("Resource_np2ls"), SubResource("Resource_tifnc"), SubResource("Resource_osffo"), SubResource("Resource_e34jv"), SubResource("Resource_btqpg"), SubResource("Resource_eiel8"), SubResource("Resource_0c1ha"), SubResource("Resource_1uoqn"), SubResource("Resource_ve32o")])
+metadata/_custom_type_script = "uid://b22ou4fukx6f8"

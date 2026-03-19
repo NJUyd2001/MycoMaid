@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogueGroup" format=3 uid="uid://ddavbd2gvpwkn"]
+
+[ext_resource type="Script" uid="uid://d6b25tygg5ps" path="res://dialogue_sys/DiaSys/scripts/dialogue.gd" id="1_gvv6g"]
+[ext_resource type="Script" uid="uid://b22ou4fukx6f8" path="res://dialogue_sys/DiaSys/scripts/DialogueGroup.gd" id="2_yjtji"]
+
+[sub_resource type="Resource" id="Resource_gvv6g"]
+script = ExtResource("1_gvv6g")
+content = "默认对话内容"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_yjtji"]
+script = ExtResource("1_gvv6g")
+content = "默认对话内容之二"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_jkkr2"]
+script = ExtResource("1_gvv6g")
+content = "默认对话内容之三"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[sub_resource type="Resource" id="Resource_ra4be"]
+script = ExtResource("1_gvv6g")
+character_name = "下一集"
+content = "默认对话内容之死"
+metadata/_custom_type_script = "uid://d6b25tygg5ps"
+
+[resource]
+script = ExtResource("2_yjtji")
+dialogue_list = Array[ExtResource("1_gvv6g")]([SubResource("Resource_gvv6g"), SubResource("Resource_yjtji"), SubResource("Resource_jkkr2"), SubResource("Resource_ra4be")])
+metadata/_custom_type_script = "uid://b22ou4fukx6f8"

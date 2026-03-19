@@ -1,18 +1,20 @@
 extends Control
-
 @export_group("UI界面")
 @export var character_name_text :Label
 @export var text_box: Label
 @export var left_avatar:TextureRect
 @export var right_avatar:TextureRect
-
 @export_group("对话")
 @export var main_dialogue :DialogueGroup
+
+
 
 var dialogue_index:=0
 var typing_tween:Tween
 
 func display_next_dialogue():
+	if !main_dialogue:
+		return
 	if dialogue_index >=len(main_dialogue.dialogue_list):
 		visible=false
 		return
