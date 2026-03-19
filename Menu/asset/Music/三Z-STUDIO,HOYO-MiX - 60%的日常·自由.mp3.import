@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c4xvgbjht4lmi"
+path="res://.godot/imported/三Z-STUDIO,HOYO-MiX - 60%的日常·自由.mp3-2b5061aa85123c165905c2156efee0e2.mp3str"
+
+[deps]
+
+source_file="res://Menu/asset/Music/三Z-STUDIO,HOYO-MiX - 60%的日常·自由.mp3"
+dest_files=["res://.godot/imported/三Z-STUDIO,HOYO-MiX - 60%的日常·自由.mp3-2b5061aa85123c165905c2156efee0e2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
