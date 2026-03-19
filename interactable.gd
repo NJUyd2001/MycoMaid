@@ -33,4 +33,4 @@ func _control_quit() ->void:
 		quit()
 
 func quit() ->void:
-	get_tree().change_scene_to_file("res://pages/game.tscn")
+	get_tree().change_scene_to_file("res://SecondaryMenu/game.tscn")

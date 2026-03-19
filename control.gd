@@ -1,11 +1,11 @@
 extends Control
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://pages/game.tscn")
+	get_tree().change_scene_to_file("res://SecondaryMenu/game.tscn")
 
 
 func _on_options_pressed() -> void:
-	get_tree().change_scene_to_file("res://pages/设置.tscn")
+	get_tree().change_scene_to_file("res://SecondaryMenu/设置.tscn")
 
 
 func _on_quit_pressed() -> void:
@@ -13,4 +13,4 @@ func _on_quit_pressed() -> void:
 
 func _input(event:InputEvent) -> void:
 	if event.is_action_pressed("start"):
-		get_tree().change_scene_to_file("res://pages/game.tscn")
+		get_tree().change_scene_to_file("res://SecondaryMenu/game.tscn")
