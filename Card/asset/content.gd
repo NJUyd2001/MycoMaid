@@ -1,6 +1,6 @@
 extends Node
 class_name cardCont
-var file_path="res://Card/asset/content.csv"#定义读取路径
+var file_path="res://Card/asset/ContentCsv/content.csv"#定义读取路径
 static  var conDict:Dictionary#定义字典
 
 func _init() -> void:

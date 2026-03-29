@@ -3,7 +3,73 @@
 [ext_resource type="Script" uid="uid://d1e7l4quapirt" path="res://Card/Script/CardDeck.gd" id="1_qsqef"]
 [ext_resource type="Script" uid="uid://g0ienjjcd2k8" path="res://Card/Script/HandDeck.gd" id="2_ayvh6"]
 [ext_resource type="Texture2D" uid="uid://bo8rr54ps1eyp" path="res://asset/fdc5df61b4058ed984ca9de24bea3ae.jpg" id="2_xu8hg"]
+[ext_resource type="PackedScene" uid="uid://bomy03cstx6ar" path="res://Card/Scene/SingleCard.tscn" id="4_2vbxt"]
 [ext_resource type="PackedScene" uid="uid://dyq6scwmfmrx0" path="res://PauseUI/Scene/SimpleUI.tscn" id="4_jic1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iopn8"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_ve530"]
+Button/styles/normal_mirrored = SubResource("StyleBoxFlat_iopn8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vbxt"]
+bg_color = Color(0.86, 0.49879998, 0.24079998, 0.74509805)
+border_width_left = 5
+border_width_top = 7
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.35260004, 0.74160683, 0.86, 0.8117647)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 4.0
+expand_margin_top = 5.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkrfp"]
+bg_color = Color(0.29157048, 0.9534511, 0.383443, 0.85490197)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.63028556, 0.5947758, 0.949874, 0.3372549)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_cfqgo"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_2vbxt")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_bkrfp")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfqgo"]
+bg_color = Color(0.5028308, 0.5028308, 0.5028308, 0.5882353)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.32274565, 0.47507316, 0.45676452, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6s1e"]
+bg_color = Color(1.1806453, 0.3264962, 0.34073183, 1)
+
+[sub_resource type="Theme" id="Theme_2vbxt"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_cfqgo")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_l6s1e")
 
 [sub_resource type="Theme" id="Theme_v4tm8"]
 
@@ -15,24 +81,15 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.44, 0.44, 0.44, 0.64705884)
 
-[node name="Node2D" type="Node2D" unique_id=2100801764 node_paths=PackedStringArray("scene_1", "scene_2", "scene_3", "discard_deck", "fever_bar")]
+[node name="Node2D" type="Node2D" unique_id=2100801764 node_paths=PackedStringArray("Library", "HandArea", "discard_deck", "fever_bar", "ap_bar")]
 script = ExtResource("1_qsqef")
-scene_1 = NodePath("Panel/ColorRect/Control2")
-scene_2 = NodePath("Panel/ColorRect/panel")
-scene_3 = NodePath("Panel/ColorRect/panel")
-discard_deck = NodePath("Panel/ColorRect/discard_panel")
+Library = NodePath("Panel/ColorRect/deck")
+HandArea = NodePath("Panel/ColorRect/hand")
+discard_deck = NodePath("Panel/ColorRect/discard")
 fever_bar = NodePath("Panel/ColorRect/FeverBar")
-maxRandomItemNum = 3
+ap_bar = NodePath("Panel/ColorRect/ApBar")
+maxRandomItemNum = 2
 minRandomItemNum = 1
-siteItem = {
-"action1": 100,
-"action2": 100,
-"action3": 80,
-"action4": 80,
-"action5": 100,
-"action6": 60,
-"action7": 20
-}
 
 [node name="Panel" type="Panel" parent="." unique_id=624505466]
 self_modulate = Color(1, 1, 1, 0)
@@ -45,8 +102,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.5
-offset_bottom = 3.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_xu8hg")
@@ -64,19 +119,48 @@ color = Color(0.39245063, 0.6337741, 0.7313261, 0.9490196)
 [node name="Button" type="Button" parent="Panel/ColorRect" unique_id=1837558411]
 layout_mode = 1
 anchors_preset = -1
+anchor_top = 0.018030513
 anchor_right = 0.13715278
-anchor_bottom = 0.08950617
+anchor_bottom = 0.10753669
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_ve530")
 text = "下一部分"
-metadata/_edit_use_anchors_ = true
 
 [node name="Button2" type="Button" parent="Panel/ColorRect" unique_id=1865583088]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.8723958
-anchor_right = 1.0
-anchor_bottom = 0.086419754
+anchor_left = 0.8661458
+anchor_top = 0.018030513
+anchor_right = 0.99375
+anchor_bottom = 0.10445026
 grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_ve530")
 text = "下一曲"
+
+[node name="Button3" type="Button" parent="Panel/ColorRect" unique_id=1725335223]
+layout_mode = 0
+anchor_left = 0.034375
+anchor_top = 0.95006937
+anchor_right = 0.109375
+anchor_bottom = 0.9930652
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_ve530")
+text = "Reset
+"
+
+[node name="ApBar" type="ProgressBar" parent="Panel/ColorRect" unique_id=402575100]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0375
+anchor_top = 0.60055476
+anchor_right = 0.10625
+anchor_bottom = 0.9334258
+theme = SubResource("Theme_cfqgo")
+max_value = 20.0
+step = 1.0
+value = 15.0
+fill_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="FeverBar" type="ProgressBar" parent="Panel/ColorRect" unique_id=1074893274]
@@ -88,9 +172,12 @@ anchor_right = 0.8
 anchor_bottom = 0.12
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_2vbxt")
+step = 1.0
+value = 20.0
 show_percentage = false
 
-[node name="panel" type="Panel" parent="Panel/ColorRect" unique_id=114590080]
+[node name="hand" type="Panel" parent="Panel/ColorRect" unique_id=114590080]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -103,7 +190,7 @@ grow_vertical = 0
 script = ExtResource("2_ayvh6")
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Panel/ColorRect/panel" unique_id=852657065]
+[node name="ColorRect" type="ColorRect" parent="Panel/ColorRect/hand" unique_id=852657065]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,7 +200,7 @@ grow_vertical = 2
 theme = SubResource("Theme_v4tm8")
 color = Color(0.36258334, 0.38, 0.17099999, 0.3137255)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ColorRect/panel/ColorRect" unique_id=384188287]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ColorRect/hand/ColorRect" unique_id=384188287]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -122,29 +209,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ColorRect/panel/ColorRect/ScrollContainer" unique_id=472758019]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ColorRect/hand/ColorRect/ScrollContainer" unique_id=472758019]
 custom_minimum_size = Vector2(114, 160)
 layout_mode = 2
 
-[node name="cardDeck" type="Control" parent="Panel/ColorRect/panel/ColorRect" unique_id=1827291827]
+[node name="cardDeck" type="Control" parent="Panel/ColorRect/hand/ColorRect" unique_id=1827291827]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="discard_panel" type="Panel" parent="Panel/ColorRect" unique_id=51022532]
+[node name="discard" type="Panel" parent="Panel/ColorRect" unique_id=51022532]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.831
-anchor_top = 0.11655556
-anchor_right = 0.98200005
-anchor_bottom = 0.42855552
+anchor_left = 0.83125
+anchor_top = 0.17891817
+anchor_right = 0.9822501
+anchor_bottom = 0.49091816
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_ayvh6")
+uniform_spacing = false
+clamp_x_within_panel = true
+clamp_padding_x = 4.0
+x_jitter_many_cards = 14
+x_jitter_amount_few = 10.0
+x_jitter_amount_many = 4.0
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Panel/ColorRect/discard_panel" unique_id=1432396851]
+[node name="ColorRect" type="ColorRect" parent="Panel/ColorRect/discard" unique_id=1432396851]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,12 +247,12 @@ grow_vertical = 2
 theme = SubResource("Theme_v4tm8")
 color = Color(0.56, 0.4, 0.4, 0.4)
 
-[node name="cardDeck" type="Control" parent="Panel/ColorRect/discard_panel/ColorRect" unique_id=2136365137]
+[node name="cardDeck" type="Control" parent="Panel/ColorRect/discard/ColorRect" unique_id=2136365137]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ColorRect/discard_panel/ColorRect" unique_id=1476116072]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ColorRect/discard/ColorRect" unique_id=1476116072]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -168,19 +261,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ColorRect/discard_panel/ColorRect/ScrollContainer" unique_id=1404554887]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ColorRect/discard/ColorRect/ScrollContainer" unique_id=1404554887]
 custom_minimum_size = Vector2(114, 160)
 layout_mode = 2
 
-[node name="Control2" type="Control" parent="Panel/ColorRect" unique_id=2124902220]
+[node name="deck" type="Control" parent="Panel/ColorRect" unique_id=2124902220]
 layout_mode = 1
-anchor_left = 0.019097222
-anchor_top = 0.46141976
-anchor_right = 0.12326389
-anchor_bottom = 0.7083333
+anchor_left = 0.01875
+anchor_top = 0.19694868
+anchor_right = 0.12291666
+anchor_bottom = 0.4438623
 metadata/_edit_use_anchors_ = true
 
-[node name="deck_stack_1" type="ColorRect" parent="Panel/ColorRect/Control2" unique_id=560027265]
+[node name="deck_stack_1" type="ColorRect" parent="Panel/ColorRect/deck" unique_id=560027265]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -193,7 +286,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12, 0.12, 0.12, 0.5)
 
-[node name="deck_stack_2" type="ColorRect" parent="Panel/ColorRect/Control2" unique_id=464565555]
+[node name="deck_stack_2" type="ColorRect" parent="Panel/ColorRect/deck" unique_id=464565555]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -206,7 +299,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2, 0.2, 0.2, 0.6)
 
-[node name="deck_stack_3" type="ColorRect" parent="Panel/ColorRect/Control2" unique_id=1712644672]
+[node name="deck_stack_3" type="ColorRect" parent="Panel/ColorRect/deck" unique_id=1712644672]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,7 +312,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.28, 0.28, 0.28, 0.7)
 
-[node name="Panel" type="Panel" parent="Panel/ColorRect/Control2" unique_id=761256020]
+[node name="Panel" type="Panel" parent="Panel/ColorRect/deck" unique_id=761256020]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,7 +321,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2anln")
 
-[node name="Label" type="Label" parent="Panel/ColorRect/Control2/Panel" unique_id=1782200962]
+[node name="Label" type="Label" parent="Panel/ColorRect/deck/Panel" unique_id=1782200962]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -241,10 +334,24 @@ Area"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Control" parent="Panel/ColorRect/deck" unique_id=435562141 instance=ExtResource("4_2vbxt")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04916667
+anchor_top = 0.018628573
+anchor_right = 0.9491667
+anchor_bottom = 0.96231806
+offset_right = 0.0
+offset_bottom = 0.0
+mouse_filter = 2
+
 [node name="Control" parent="." unique_id=1195963652 instance=ExtResource("4_jic1n")]
 offset_left = 319.0
 offset_top = 667.0
 offset_right = 319.0
 offset_bottom = 667.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="button_down" from="Panel/ColorRect/Button" to="." method="get_card"]
+[connection signal="pressed" from="Panel/ColorRect/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/Button3" to="." method="_on_button_3_pressed"]

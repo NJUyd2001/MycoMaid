@@ -1,0 +1,16 @@
+﻿base_cardName,index,base_display,base_cardClass,fever,take,base_describe,base_price
+1,1,平斩,attack,2,0,,1
+2,2,一字斩,attack,2,1,,2
+3,3,后撤,action,0,1,,1
+4,4,突进,action,1,1,,1
+5,5,防御,defend,1,0,,1
+6,6,特殊防御,defend,2,0,,2
+7,7,连斩,attack,3,0,,3
+8,8,装附,fever,5,1,,0
+9,9,冥想,fever,7,2,,0
+10,10,聚气,fever,10,3,,0
+11,11,守卫,fever,3,0,,0
+12,12,亥,act,,,,
+13,13,——,adj,,,,
+14,14,————,adj,,,,
+15,15,——————,adv,,,,

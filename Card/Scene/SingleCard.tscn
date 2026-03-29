@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bomy03cstx6ar"]
 
-[ext_resource type="Script" uid="uid://dulod535fhobe" path="res://Card/Script/SingleCard.gd" id="1_6yynx"]
+[ext_resource type="Script" uid="uid://dulod535fhobe" path="res://Card/Script/singleCard.gd" id="1_6yynx"]
 [ext_resource type="Shader" uid="uid://d24dx6lnlk30v" path="res://Card/asset/color.gdshader" id="2_1bmmo"]
 [ext_resource type="Texture2D" uid="uid://bjme3shsbciou" path="res://asset/icon.svg" id="2_lpn67"]
+[ext_resource type="PackedScene" uid="uid://ba072bkvse25" path="res://states/Scene/card_state_machines.tscn" id="4_us552"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hw8kv"]
 
@@ -11,17 +12,6 @@ shader = ExtResource("2_1bmmo")
 shader_parameter/horizontal_influence = 0.5
 shader_parameter/vertical_influence = 0.20000000298024
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqjnp"]
-bg_color = Color(0.21950099, 0.21950105, 0.21950087, 0.48235294)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.08, 0.08, 0.08, 0.74509805)
-
-[sub_resource type="Theme" id="Theme_efxnb"]
-Button/styles/hover = SubResource("StyleBoxFlat_sqjnp")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqjnp"]
 size = Vector2(121, 168)
 
@@ -29,8 +19,9 @@ size = Vector2(121, 168)
 material = SubResource("ShaderMaterial_hw8kv")
 custom_minimum_size = Vector2(114, 160)
 layout_mode = 3
-anchor_right = 0.09375
-anchor_bottom = 0.23333333
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 168.0
 script = ExtResource("1_6yynx")
 metadata/_edit_use_anchors_ = true
 
@@ -43,9 +34,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=803728519]
+[node name="color" type="ColorRect" parent="Panel" unique_id=803728519]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.025
@@ -54,32 +46,34 @@ anchor_right = 0.975
 anchor_bottom = 0.97619045
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="pic" type="TextureRect" parent="Panel/ColorRect" unique_id=1652805912]
+[node name="pic" type="TextureRect" parent="Panel/color" unique_id=1652805912]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 27.0
-offset_top = -40.0
+offset_top = -37.0
 offset_right = -27.0
-offset_bottom = 20.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_lpn67")
 expand_mode = 1
 flip_h = true
 
-[node name="name" type="Label" parent="Panel/ColorRect" unique_id=331062194]
+[node name="name" type="Label" parent="Panel/color" unique_id=331062194]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = 20.0
-offset_bottom = 50.0
+offset_top = 23.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
@@ -87,23 +81,35 @@ text = "the Card"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=219757743]
-self_modulate = Color(1, 1, 1, 0.105882354)
+[node name="state" type="Label" parent="Panel/color" unique_id=908084268]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -72.0
+offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_efxnb")
-metadata/_edit_use_anchors_ = true
+theme_override_colors/font_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
+theme_override_font_sizes/font_size = 20
+text = "不在状态"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Area2D" type="Area2D" parent="Button" unique_id=1722629099]
+[node name="DropPointDetector" type="Area2D" parent="." unique_id=1722629099]
 collision_mask = 2
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D" unique_id=2099199029]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector" unique_id=2099199029]
+light_mask = 2
 position = Vector2(60.5, 85)
 shape = SubResource("RectangleShape2D_sqjnp")
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[node name="CardStateMachines" parent="." unique_id=15981025 instance=ExtResource("4_us552")]
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="DropPointDetector" to="." method="_on_drop_point_detector_area_entered"]
+[connection signal="area_exited" from="DropPointDetector" to="." method="_on_drop_point_detector_area_exited"]

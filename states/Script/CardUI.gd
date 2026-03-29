@@ -5,14 +5,15 @@ class_name CardUI
 signal reparent_requested(which_card_ui:CardUI)
 
 @onready var color: ColorRect =$Panel/color
-@onready var state: Label=$Panel/state
+@onready var state: Label=$Panel/color/name
 @onready var area_2d: Area2D = $DropPointDetector
 
 @onready var card_state_machine: CardStateMachines =$CardStateMachines as CardStateMachines
 
 @onready var targets:Array[Node] =[]
 func _ready() -> void:
-	card_state_machine.init(self)
+	pass
+	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouse:
 		card_state_machine.on_input(event)

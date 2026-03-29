@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ba072bkvse25"]
+
+[ext_resource type="Script" uid="uid://cau7t2gpfwir" path="res://states/Script/card_state_machines.gd" id="1_fy675"]
+[ext_resource type="Script" uid="uid://grpf564gmsws" path="res://states/Script/state/card_state_base.gd" id="2_a5svh"]
+[ext_resource type="Script" uid="uid://32onfsq4o5bc" path="res://states/Script/state/card_state_clicked.gd" id="3_n8cs5"]
+[ext_resource type="Script" uid="uid://47mvm8e01duw" path="res://states/Script/state/card_state_dragging.gd" id="4_y7og8"]
+[ext_resource type="Script" uid="uid://d26r2wts5m0ur" path="res://states/Script/state/card_state_released.gd" id="5_uo6eo"]
+
+[node name="CardStateMachines" type="Node" unique_id=15981025 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_fy675")
+initial_state = NodePath("CardStateBase")
+
+[node name="CardStateBase" type="Node" parent="." unique_id=1551284371]
+script = ExtResource("2_a5svh")
+
+[node name="CardStateClicked" type="Node" parent="." unique_id=1392895289]
+script = ExtResource("3_n8cs5")
+state = 1
+
+[node name="CardStateDragging" type="Node" parent="." unique_id=438130623]
+script = ExtResource("4_y7og8")
+state = 2
+
+[node name="CardStateReleased" type="Node" parent="." unique_id=1436420257]
+script = ExtResource("5_uo6eo")
+state = 4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://da2x452kfiake"
+
+[deps]
+
+files=["res://Card/asset/ContentCsv/content.index.translation", "res://Card/asset/ContentCsv/content.base.translation", "res://Card/asset/ContentCsv/content.base.translation", "res://Card/asset/ContentCsv/content.fever.translation", "res://Card/asset/ContentCsv/content.take.translation", "res://Card/asset/ContentCsv/content.en.translation", "res://Card/asset/ContentCsv/content.base.translation"]
+
+source_file="res://Card/asset/ContentCsv/content.csv"
+dest_files=["res://Card/asset/ContentCsv/content.index.translation", "res://Card/asset/ContentCsv/content.base.translation", "res://Card/asset/ContentCsv/content.base.translation", "res://Card/asset/ContentCsv/content.fever.translation", "res://Card/asset/ContentCsv/content.take.translation", "res://Card/asset/ContentCsv/content.en.translation", "res://Card/asset/ContentCsv/content.base.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
